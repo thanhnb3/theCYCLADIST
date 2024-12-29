@@ -1,5 +1,5 @@
 const header = document.querySelector(".header");
-let lastScrollY = 0; // Lưu trữ vị trí cuộn trước đó
+let lastScrollY = 0; // Vị trí cuộn ban đầu, mục đích là sau mỗi lần cuộn sẽ cập nhật vị trí cuộn
 
 window.addEventListener("scroll", () => {
   const scroll_Y = window.scrollY;
@@ -7,10 +7,10 @@ window.addEventListener("scroll", () => {
   if (scroll_Y > 70) {
     header.classList.add("active");
     if (scroll_Y > lastScrollY) {
-      // Đang cuộn xuống
+      // Cuộn xuống
       header.classList.remove("action");
     } else {
-      // Đang cuộn lên
+      // Cuộn lên
       header.classList.add("action");
     }
   } else {
@@ -28,14 +28,10 @@ clickScroll.addEventListener("click", () => {
   });
 });
 
-// DIV lets-plan-text
-
 const textPlan = document.getElementById("plan-text-color");
-
-// Lấy toàn bộ nội dung gốc
 const textContent = textPlan.innerHTML;
 
-// Tách nội dung HTML của `textPlan` thành các ký tự bao gồm cả thẻ HTML
+// Cú pháp tách nội dung HTML của `textPlan` thành các ký tự bao gồm cả thẻ HTML
 const characters = textContent
   .split(/(<[^>]+>|.)/g)
   .filter((char) => char !== "");
@@ -77,28 +73,6 @@ window.addEventListener("scroll", () => {
 });
 
 // home- section4
-// document.addEventListener("DOMContentLoaded", function () {
-//   document.addEventListener("scroll", function () {
-//     const homeSection4 = document.querySelector(".home-section4");
-//     const homeSection4Height = homeSection4.offsetHeight;
-//     const homeSection4Top = homeSection4.offsetTop;
-//     const scrollY = window.scrollY;
-//     const windowHeight = window.innerHeight;
-
-//     if (
-//       scrollY >= homeSection4Top &&
-//       scrollY < homeSection4Top + homeSection4Height - windowHeight
-//     ) {
-//       homeSection4.style.position = "fixed";
-//       homeSection4.style.top = "0";
-//       homeSection4.style.left = "0";
-//       homeSection4.style.width = "100%";
-//     } else {
-//       homeSection4.style.position = "relative";
-//     }
-//   });
-// });
-
 document.addEventListener("DOMContentLoaded", function () {
   const homeSection4 = document.querySelector(".home-section4");
   const rect = homeSection4.getBoundingClientRect();
